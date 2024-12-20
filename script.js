@@ -23,42 +23,39 @@ function getHumanChoice() {
 let computerScore = 0;
 let humanScore = 0;
 
-function playRound(humanChoice, computerChoice){
+function playRound(humanChoice, computerChoice, roundNumber){
     
     if ((humanChoice == "Rock" && computerChoice == "Rock") || (humanChoice == "Paper" && computerChoice == "Paper" ) || (humanChoice == "Scissors" && computerChoice == "Scissors" )) {
-        alert("Computer chose: " + computerChoice );
-        alert("It's a draw!");
-    }
+        alert("Computer chose: " + computerChoice + "\nIt's a draw!" );
+       }
 
     else if ((humanChoice == "Rock" && computerChoice == "Paper") || (humanChoice == "Paper" && computerChoice == "Scissors" ) || (humanChoice == "Scissors" && computerChoice == "Rock" )){
-        alert("Computer chose: " + computerChoice );
-        alert("You lose!") ;
+        alert("Computer chose: " + computerChoice + "\nYou  lose!" );
         computerScore = ++computerScore;
     
     }
     else if ((humanChoice == "Rock" && computerChoice == "Scissors") || (humanChoice == "Paper" && computerChoice == "Rock" ) || (humanChoice == "Scissors" && computerChoice == "Paper" )) {
-        alert("Computer chose: " + computerChoice );
-        alert("You win!") ;
+        alert("Computer chose: " + computerChoice + "\nYou win!" ); 
         humanScore = ++humanScore;
     }   
 
-    alert("Your score is: " + humanScore + " The computer score is: " + computerScore);
+    alert("Round: " + roundNumber + "\nYour score is: " + humanScore + "\nThe computer score is: " + computerScore);
+    console.log("Round Number: " + roundNumber)
+    console.log("Human score: " + humanScore)
+    console.log("Computer score: " + computerScore)
 }
 
 function playGame(){
 
-console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log(playRound(getHumanChoice(), getComputerChoice(), 1));
 
-console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log(playRound(getHumanChoice(), getComputerChoice(), 2));
 
-console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log(playRound(getHumanChoice(), getComputerChoice(), 3));
 
-console.log(playRound(getHumanChoice(), getComputerChoice()));
+console.log(playRound(getHumanChoice(), getComputerChoice(), 4));
 
-console.log(playRound(getHumanChoice(), getComputerChoice()));
-
-console.log("Human score: " + humanScore)
-console.log("Computer score: " + computerScore)
+console.log(playRound(getHumanChoice(), getComputerChoice(), 5));
 
 }
 
