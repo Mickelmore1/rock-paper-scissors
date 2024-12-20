@@ -1,6 +1,6 @@
 //Rock Paper Scissors
 
-function getComputerChoice() {
+function getComputerChoice() { //Computer choice
     let x = Math.random();
     if (x < 0.33) {
         x = "Rock";
@@ -11,19 +11,68 @@ function getComputerChoice() {
     else {
         x = "Scissors"
     }
-    return x
+    return x;
 }
-
-console.log(getComputerChoice())
 
 function getHumanChoice() {
     let y = prompt("Please enter Rock, Paper of Scissors");
     alert("You have chosen: " + y);
+    return y;
 }
-
-console.log(getHumanChoice())
 
 let computerScore = 0;
 let humanScore = 0;
 
+function playRound(humanChoice, computerChoice){
+    
+    if ((humanChoice == "Rock" && computerChoice == "Rock") || (humanChoice == "Paper" && computerChoice == "Paper" ) || (humanChoice == "Scissors" && computerChoice == "Scissors" )) {
+        alert("Computer chose: " + computerChoice );
+        alert("It's a draw!");
+    }
 
+    else if ((humanChoice == "Rock" && computerChoice == "Paper") || (humanChoice == "Paper" && computerChoice == "Scissors" ) || (humanChoice == "Scissors" && computerChoice == "Rock" )){
+        alert("Computer chose: " + computerChoice );
+        alert("You lose!") ;
+        computerScore = ++computerScore;
+    
+    }
+    else if ((humanChoice == "Rock" && computerChoice == "Scissors") || (humanChoice == "Paper" && computerChoice == "Rock" ) || (humanChoice == "Scissors" && computerChoice == "Paper" )) {
+        alert("Computer chose: " + computerChoice );
+        alert("You win!") ;
+        humanScore = ++humanScore;
+    }   
+
+    alert("Your score is: " + humanScore + " The computer score is: " + computerScore);
+}
+
+function playGame(){
+
+console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+console.log("Human score: " + humanScore)
+console.log("Computer score: " + computerScore)
+
+}
+
+playGame();
+
+
+if (humanScore > computerScore) {
+    alert("You win!!")
+}
+
+else if(humanScore == computerScore) {
+    alert("It's a tie!")
+}
+
+else if(humanScore < computerScore) {
+    alert("You lose.")
+}
