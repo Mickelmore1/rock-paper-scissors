@@ -66,13 +66,13 @@ playGame();
 
 
 if (humanScore > computerScore) {
-    alert("You win!!")
+    alert("Overall: You win!!")
 }
 
 else if(humanScore == computerScore) {
-    alert("It's a tie!")
+    alert("Overall: It's a tie!")
 }
 
 else if(humanScore < computerScore) {
-    alert("You lose.")
+    alert("Overall: You lose.")
 }
