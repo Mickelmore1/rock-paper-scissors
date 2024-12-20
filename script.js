@@ -39,7 +39,7 @@ function playRound(humanChoice, computerChoice, roundNumber){
         humanScore = ++humanScore;
     }   
 
-    alert("Round: " + roundNumber + "\n\nYour score is: " + humanScore + "\nThe computer score is: " + computerScore);
+    alert("Round: " + roundNumber + "\n \nYour score is: " + humanScore + "\nThe computer score is: " + computerScore);
     console.log("Round Number: " + roundNumber)
     console.log("Human score: " + humanScore)
     console.log("Computer score: " + computerScore)
