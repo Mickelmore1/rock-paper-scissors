@@ -1,67 +1,50 @@
-//Rock Paper Scissors
-
 function getComputerChoice() { 
     let x = Math.random();
-    console.log(x);
-    if (x < 0.33) {
-        x = "Rock";
-    }
-    else if (x >= 0.33 && x <= 0.66) {
-        x = "Paper";
-    } 
-    else {
-        x = "Scissors"
-    }
+    if (x < 0.33) { x = "Rock"; }
+    else if (x >= 0.33 && x <= 0.66) { x = "Paper"; } 
+    else { x = "Scissors" }
+    document.getElementById('computerChoice').textContent = x
     return x;
 }
 
-function getHumanChoice() {
-    let y = prompt("Please enter Rock, Paper of Scissors");
-    alert("You have chosen: " + y);
-    return y;
+function getHumanChoice(event) {
+    if (document.getElementById('humanScore').textContent == 5 || document.getElementById('computerScore').textContent == 5 ){
+        alert ("Game is over. Please restart by refreshing or clicking the restart button")
+    } else {
+        const buttonPressed = event.target.id;
+        document.getElementById('humanChoice').textContent = buttonPressed;
+        playRound(buttonPressed, getComputerChoice())
+    }
 }
-
-let computerScore = 0;
-let humanScore = 0;
 
 function playRound(humanChoice, computerChoice, roundNumber) {
-    
-    if (humanChoice == computerChoice) {
-        alert("Computer chose: " + computerChoice + "\n \nIt's a draw!" );
-       }
-
-    else if ((humanChoice == "Rock" && computerChoice == "Paper") || (humanChoice == "Paper" && computerChoice == "Scissors" ) || (humanChoice == "Scissors" && computerChoice == "Rock" )){
-        alert("Computer chose: " + computerChoice + "\n \nYou lose!" );
-        computerScore = ++computerScore;
-    
+    const computerScore = document.querySelector('#computerScore');
+    const humanScore = document.querySelector('#humanScore');
+    if ((humanChoice == "Rock" && computerChoice == "Paper") || (humanChoice == "Paper" && computerChoice == "Scissors" ) || (humanChoice == "Scissors" && computerChoice == "Rock" )){
+        ++computerScore.textContent;
     }
-    else if ((humanChoice == "Rock" && computerChoice == "Scissors") || (humanChoice == "Paper" && computerChoice == "Rock" ) || (humanChoice == "Scissors" && computerChoice == "Paper" )) {
-        alert("Computer chose: " + computerChoice + "\n \nYou win!" ); 
-        humanScore = ++humanScore;
+    if ((humanChoice == "Rock" && computerChoice == "Scissors") || (humanChoice == "Paper" && computerChoice == "Rock" ) || (humanChoice == "Scissors" && computerChoice == "Paper" )){
+        ++humanScore.textContent;
     }   
+    if (computerScore.textContent == 5) {
+        document.getElementById('result').textContent = "Commiserations. Computer wins."
+    } 
+    if (humanScore.textContent == 5) {
+        document.getElementById('result').textContent = "Congratulations! You win!"
 
-    alert("Round: " + roundNumber + "\n \nYour score is: " + humanScore + "\nThe computer score is: " + computerScore);
-    console.log("Round Number: " + roundNumber)
-    console.log("Human score: " + humanScore)
-    console.log("Computer score: " + computerScore)
-}
-
-function playGame() {
-    console.log(playRound(getHumanChoice(), getComputerChoice(), 1));
-    console.log(playRound(getHumanChoice(), getComputerChoice(), 2));
-    console.log(playRound(getHumanChoice(), getComputerChoice(), 3));
-    console.log(playRound(getHumanChoice(), getComputerChoice(), 4));
-    console.log(playRound(getHumanChoice(), getComputerChoice(), 5));
-
-    if (humanScore > computerScore) {
-        alert("Overall: You win!!")
-    }
-    else if(humanScore == computerScore) {
-        alert("Overall: It's a tie!")
-    }
-    else if(humanScore < computerScore) {
-        alert("Overall: You lose.")
     }
 }
 
-playGame();
+function restartGame() {
+    document.getElementById('computerScore').innerText = 0;
+    document.getElementById('humanScore').innerText = 0;
+    document.getElementById('humanChoice').innerText = "";
+    document.getElementById('computerChoice').innerText = "";
+    document.getElementById('result').innerText = "";
+
+}
+
+document.querySelector('#Rock').addEventListener('click', getHumanChoice);
+document.querySelector('#Paper').addEventListener('click', getHumanChoice);
+document.querySelector('#Scissors').addEventListener('click', getHumanChoice);
+document.querySelector('#restart').addEventListener('click', restartGame);

@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+img {
+    width: 300px;
+}
+
+#header, #roundPlayed, #liveScore, #restartButton, #gameOver{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#playerChoice {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 16px;
+    padding: 16px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    margin: 16px;
+}
+
+p {
+    margin: 4px;
+}
+
+#humanChoice, #computerChoice, #humanScore, #computerScore {
+    font-weight: bold;
+}
+
+#gameOver { 
+    height: 24px;
+    padding-bottom: 16px;
+}
+
