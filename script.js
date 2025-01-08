@@ -9,7 +9,6 @@ function getComputerChoice() {
 
 function getHumanChoice(event) {
     if (document.getElementById('humanScore').textContent == 5 || document.getElementById('computerScore').textContent == 5 ){
-        alert ("Game is over. Please restart by refreshing or clicking the restart button")
     } else {
         const buttonPressed = event.target.id;
         document.getElementById('humanChoice').textContent = buttonPressed;
@@ -27,11 +26,16 @@ function playRound(humanChoice, computerChoice, roundNumber) {
         ++humanScore.textContent;
     }   
     if (computerScore.textContent == 5) {
-        document.getElementById('result').textContent = "Commiserations. Computer wins."
+        document.getElementById('result').textContent = "Commiserations. Computer wins.";
+        document.getElementById('result').appendChild(document.createElement('br'));
+        document.getElementById('result').appendChild(document.createElement('br'));
+        document.getElementById('result').append("Please restart the game.");
     } 
     if (humanScore.textContent == 5) {
-        document.getElementById('result').textContent = "Congratulations! You win!"
-
+        document.getElementById('result').textContent = "Congratulations! You win!";
+        document.getElementById('result').appendChild(document.createElement('br'));
+        document.getElementById('result').appendChild(document.createElement('br'));
+        document.getElementById('result').append("Please restart the game.");
     }
 }
 

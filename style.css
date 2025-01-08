@@ -46,3 +46,6 @@ p {
     padding-bottom: 16px;
 }
 
+#result {
+    text-align: center;
+}
